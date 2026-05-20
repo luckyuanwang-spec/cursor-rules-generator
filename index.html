@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Cursor Rules Generator - Create .cursorrules Files Online</title>
+    <meta name="description" content="Free online Cursor Rules generator. Create .cursorrules files for Cursor AI editor instantly. Support React, Vue, Python, Node.js and more. No signup required.">
+    <meta name="keywords" content="cursor rules, .cursorrules, cursor ai rules, cursor rules generator, AI coding rules, cursor editor">
+    <meta name="robots" content="index, follow">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            padding: 30px 0;
+            color: white;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .lang-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.2);
+            border: 2px solid white;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+        }
+        
+        .lang-toggle:hover {
+            background: white;
+            color: #667eea;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        
+        .card h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .stack-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+        
+        .stack-btn {
+            padding: 12px 16px;
+            border: 2px solid #e0e0e0;
+            background: white;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s;
+            text-align: center;
+        }
+        
+        .stack-btn:hover {
+            border-color: #667eea;
+            color: #667eea;
+        }
+        
+        .stack-btn.active {
+            border-color: #667eea;
+            background: #667eea;
+            color: white;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-family: inherit;
+            resize: vertical;
+            min-height: 100px;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .style-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 12px;
+        }
+        
+        .style-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .style-option:hover {
+            background: #e9ecef;
+        }
+        
+        .style-option input {
+            width: 18px;
+            height: 18px;
+            accent-color: #667eea;
+        }
+        
+        .style-option span {
+            color: #333;
+            font-size: 0.95rem;
+        }
+        
+        .action-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 20px auto 0;
+        }
+        
+        .action-btn:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+        }
+        
+        .output-section {
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        .output-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .output-header h3 {
+            color: #333;
+            font-size: 1.1rem;
+        }
+        
+        .copy-btn {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .copy-btn:hover {
+            background: #218838;
+        }
+        
+        .copy-btn.copied {
+            background: #17a2b8;
+        }
+        
+        .rules-output {
+            background: #1e1e1e;
+            border-radius: 12px;
+            padding: 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: #d4d4d4;
+            white-space: pre-wrap;
+            word-break: break-word;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+        
+        .info-box {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .info-box h3 {
+            margin-bottom: 15px;
+        }
+        
+        .info-box p {
+            line-height: 1.6;
+            opacity: 0.95;
+        }
+        
+        .faq-section h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+        
+        .faq-item {
+            border-bottom: 1px solid #e0e0e0;
+            padding: 15px 0;
+        }
+        
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+        
+        .faq-question {
+            color: #333;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-question::after {
+            content: "+";
+            font-size: 1.5rem;
+            color: #667eea;
+            transition: transform 0.3s;
+        }
+        
+        .faq-item.open .faq-question::after {
+            transform: rotate(45deg);
+        }
+        
+        .faq-answer {
+            color: #666;
+            margin-top: 10px;
+            line-height: 1.6;
+            display: none;
+        }
+        
+        .faq-item.open .faq-answer {
+            display: block;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: white;
+        }
+        
+        footer a {
+            color: white;
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .card {
+                padding: 20px;
+            }
+            
+            .stack-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .style-options {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="lang-toggle" onclick="toggleLanguage()">中文</button>
+    
+    <div class="container">
+        <header>
+            <h1 data-en="Free Cursor Rules Generator" data-zh="免费 Cursor Rules 生成器">Free Cursor Rules Generator</h1>
+            <p class="subtitle" data-en="Create .cursorrules files for Cursor AI editor instantly" data-zh="即时为 Cursor AI 编辑器创建 .cursorrules 配置文件">Create .cursorrules files for Cursor AI editor instantly</p>
+        </header>
+        
+        <div class="card">
+            <h2 data-en="1️⃣ Select Your Tech Stack" data-zh="1️⃣ 选择技术栈">1️⃣ Select Your Tech Stack</h2>
+            
+            <div class="stack-grid">
+                <button class="stack-btn active" data-stack="react" onclick="selectStack('react')">React / Next.js</button>
+                <button class="stack-btn" data-stack="vue" onclick="selectStack('vue')">Vue / Nuxt</button>
+                <button class="stack-btn" data-stack="typescript" onclick="selectStack('typescript')">TypeScript</button>
+                <button class="stack-btn" data-stack="node" onclick="selectStack('node')">Node.js</button>
+                <button class="stack-btn" data-stack="python" onclick="selectStack('python')">Python</button>
+                <button class="stack-btn" data-stack="go" onclick="selectStack('go')">Go</button>
+                <button class="stack-btn" data-stack="rust" onclick="selectStack('rust')">Rust</button>
+                <button class="stack-btn" data-stack="custom" onclick="selectStack('custom')">Custom</button>
+            </div>
+            
+            <div class="form-group">
+                <label data-en="2️⃣ Project Description" data-zh="2️⃣ 项目描述">2️⃣ Project Description</label>
+                <textarea id="projectDesc" data-en-placeholder="Describe your project... (e.g., A React e-commerce app with TypeScript, using Redux for state management)" data-zh-placeholder="描述你的项目... (例如：一个使用 TypeScript 的 React 电商应用，使用 Redux 管理状态)" placeholder="Describe your project... (e.g., A React e-commerce app with TypeScript, using Redux for state management)"></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label data-en="3️⃣ Coding Style Preferences" data-zh="3️⃣ 代码风格偏好">3️⃣ Coding Style Preferences</label>
+                
+                <div class="style-options">
+                    <label class="style-option">
+                        <input type="checkbox" id="functional" checked>
+                        <span data-en="Functional approach" data-zh="函数式编程">Functional approach</span>
+                    </label>
+                    <label class="style-option">
+                        <input type="checkbox" id="typescript" checked>
+                        <span data-en="Strong typing" data-zh="强类型检查">Strong typing</span>
+                    </label>
+                    <label class="style-option">
+                        <input type="checkbox" id="errorHandling" checked>
+                        <span data-en="Error handling" data-zh="错误处理">Error handling</span>
+                    </label>
+                    <label class="style-option">
+                        <input type="checkbox" id="testing" checked>
+                        <span data-en="Testing practices" data-zh="测试实践">Testing practices</span>
+                    </label>
+                    <label class="style-option">
+                        <input type="checkbox" id="performance" checked>
+                        <span data-en="Performance optimization" data-zh="性能优化">Performance optimization</span>
+                    </label>
+                    <label class="style-option">
+                        <input type="checkbox" id="accessibility" checked>
+                        <span data-en="Accessibility (a11y)" data-zh="无障碍访问">Accessibility (a11y)</span>
+                    </label>
+                    <label class="style-option">
+                        <input type="checkbox" id="security" checked>
+                        <span data-en="Security best practices" data-zh="安全最佳实践">Security best practices</span>
+                    </label>
+                    <label class="style-option">
+                        <input type="checkbox" id="documentation" checked>
+                        <span data-en="Code documentation" data-zh="代码文档">Code documentation</span>
+                    </label>
+                </div>
+            </div>
+            
+            <button class="action-btn" onclick="generateRules()">
+                <span data-en="⚡ Generate .cursorrules" data-zh="⚡ 生成 .cursorrules">⚡ Generate .cursorrules</span>
+            </button>
+            
+            <div class="output-section" id="outputSection" style="display: none;">
+                <div class="output-header">
+                    <h3 data-en="📄 Your .cursorrules File" data-zh="📄 你的 .cursorrules 文件">📄 Your .cursorrules File</h3>
+                    <button class="copy-btn" id="copyBtn" onclick="copyRules()">
+                        <span data-en="📋 Copy" data-zh="📋 复制">📋 Copy</span>
+                    </button>
+                </div>
+                <div class="rules-output" id="rulesOutput"></div>
+            </div>
+        </div>
+        
+        <div class="card info-box">
+            <h3 data-en="💡 What is .cursorrules?" data-zh="💡 什么是 .cursorrules？">💡 What is .cursorrules?</h3>
+            <p data-en=".cursorrules is a configuration file that tells Cursor AI your coding standards, project conventions, and preferences. It helps the AI generate code that matches your team's style and requirements. Place the file in your project root and Cursor will automatically follow your rules." data-zh=".cursorrules 是一个配置文件，告诉 Cursor AI 你的编码标准、项目规范和偏好。它帮助 AI 生成的代码符合你团队的代码风格和要求。将文件放在项目根目录，Cursor 会自动遵循你的规则。">.cursorrules is a configuration file that tells Cursor AI your coding standards, project conventions, and preferences. It helps the AI generate code that matches your team's style and requirements. Place the file in your project root and Cursor will automatically follow your rules.</p>
+        </div>
+        
+        <div class="card faq-section">
+            <h2 data-en="Frequently Asked Questions" data-zh="常见问题">Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question" data-en="Where do I put the .cursorrules file?" data-zh=".cursorrules 文件应该放在哪里？">Where do I put the .cursorrules file?</div>
+                <div class="faq-answer" data-en="Place the .cursorrules file in your project root directory (same level as package.json, tsconfig.json, etc.). Cursor will automatically detect and use it." data-zh="将 .cursorrules 文件放在项目根目录（与 package.json、tsconfig.json 同级）。Cursor 会自动检测并使用它。">Place the .cursorrules file in your project root directory (same level as package.json, tsconfig.json, etc.). Cursor will automatically detect and use it.</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" data-en="What's the difference between .cursorrules and CLAUDE.md?" data-zh=".cursorrules 和 CLAUDE.md 有什么区别？">What's the difference between .cursorrules and CLAUDE.md?</div>
+                <div class="faq-answer" data-en=".cursorrules is for coding-specific rules (syntax, patterns, conventions). CLAUDE.md is for broader project context (architecture, goals, workflows). Use both for best results." data-zh=".cursorrules 用于编码相关规则（语法、模式、规范）。CLAUDE.md 用于更广泛的项目背景（架构、目标、工作流）。两者结合使用效果最佳。">.cursorrules is for coding-specific rules (syntax, patterns, conventions). CLAUDE.md is for broader project context (architecture, goals, workflows). Use both for best results.</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" data-en="Can I use this with Claude Code or Copilot?" data-zh="这个可以用于 Claude Code 或 Copilot 吗？">Can I use this with Claude Code or Copilot?</div>
+                <div class="faq-answer" data-en="The .cursorrules format is specific to Cursor. However, you can adapt the content for CLAUDE.md (Claude Code) or .github/copilot-instructions.md (GitHub Copilot)." data-zh=".cursorrules 格式是 Cursor 特有的。但是你可以将内容适配到 CLAUDE.md（Claude Code）或 .github/copilot-instructions.md（GitHub Copilot）。">The .cursorrules format is specific to Cursor. However, you can adapt the content for CLAUDE.md (Claude Code) or .github/copilot-instructions.md (GitHub Copilot).</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" data-en="How do I update my rules over time?" data-zh="如何随着时间更新我的规则？">How do I update my rules over time?</div>
+                <div class="faq-answer" data-en="Start with basic rules and refine as you learn what works. Add new rules when you encounter repeated issues or establish new conventions. Keep the file focused - too many rules can be overwhelming." data-zh="从基础规则开始，随着学习不断完善。当你遇到重复问题时或建立新规范时添加新规则。保持文件专注 - 太多规则可能会适得其反。">Start with basic rules and refine as you learn what works. Add new rules when you encounter repeated issues or establish new conventions. Keep the file focused - too many rules can be overwhelming.</div>
+            </div>
+        </div>
+        
+        <footer>
+            <p data-en="Free Cursor Rules Generator • 100% Browser-Based • No Data Sent" data-zh="免费 Cursor Rules 生成器 • 100% 基于浏览器 • 不发送任何数据">Free Cursor Rules Generator • 100% Browser-Based • No Data Sent</p>
+        </footer>
+    </div>
+    
+    <script>
+        let currentStack = 'react';
+        let currentLang = 'en';
+        
+        const stackTemplates = {
+            react: {
+                name: 'React / Next.js',
+                rules: [
+                    '# Use functional components with hooks',
+                    '# Prefer arrow functions for components',
+                    '# Use TypeScript for all new files',
+                    '# Component file naming: ComponentName.tsx',
+                    '# Custom hooks naming: use + action (useFetch, useAuth)',
+                    '# State management: Use React Context or Zustand for global state',
+                    '# Prefer composition over inheritance',
+                    '# Use React.memo() only when necessary for performance',
+                    '# Always handle loading and error states'
+                ]
+            },
+            vue: {
+                name: 'Vue / Nuxt',
+                rules: [
+                    '# Use Composition API with <script setup>',
+                    '# Prefer reactive() and ref() over Options API',
+                    '# Use TypeScript for all new files',
+                    '# Component file naming: PascalCase.vue',
+                    '# Composables naming: use + action (useFetch, useAuth)',
+                    '# Use Pinia for state management',
+                    '# Follow Vue 3 best practices for reactivity'
+                ]
+            },
+            typescript: {
+                name: 'TypeScript',
+                rules: [
+                    '# Enable strict mode in tsconfig.json',
+                    '# Avoid any type - use unknown when type is unclear',
+                    '# Use interfaces for object shapes',
+                    '# Use type for unions, intersections, and primitives',
+                    '# Prefer generics over type assertions',
+                    '# Export types that are used across files',
+                    '# Use readonly for immutable data'
+                ]
+            },
+            node: {
+                name: 'Node.js',
+                rules: [
+                    '# Use async/await over callbacks',
+                    '# Handle errors with try/catch or .catch()',
+                    '# Use environment variables for configuration',
+                    '# Prefer destructuring for imports',
+                    '# Use meaningful variable and function names',
+                    '# Modularize code into separate files',
+                    '# Handle promise rejections'
+                ]
+            },
+            python: {
+                name: 'Python',
+                rules: [
+                    '# Follow PEP 8 style guide',
+                    '# Use type hints for function parameters and returns',
+                    '# Prefer list comprehensions over loops when appropriate',
+                    '# Use f-strings for string formatting',
+                    '# Handle exceptions with specific exception types',
+                    '# Use virtual environments for dependency management',
+                    '# Docstrings for all public functions and classes'
+                ]
+            },
+            go: {
+                name: 'Go',
+                rules: [
+                    '# Follow Go code review comments',
+                    '# Use gofmt for code formatting',
+                    '# Error handling: return early on errors',
+                    '# Use interfaces for abstraction',
+                    '# Keep functions small and focused',
+                    '# Use context.Context for cancellation',
+                    '# Write tests for all exported functions'
+                ]
+            },
+            rust: {
+                name: 'Rust',
+                rules: [
+                    '# Follow Rust idioms and conventions',
+                    '# Use Result for error handling',
+                    '# Prefer clone() over borrowing when simpler',
+                    '# Use iterators for collections',
+                    '# Write documentation for public APIs',
+                    '# Use match for exhaustive handling',
+                    '# Keep functions small and single-purpose'
+                ]
+            },
+            custom: {
+                name: 'Custom Project',
+                rules: [
+                    '# Write clear, readable code',
+                    '# Follow consistent naming conventions',
+                    '# Add comments for complex logic',
+                    '# Keep functions small and focused',
+                    '# Handle errors gracefully',
+                    '# Write testable code'
+                ]
+            }
+        };
+        
+        function selectStack(stack) {
+            currentStack = stack;
+            document.querySelectorAll('.stack-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.stack === stack) {
+                    btn.classList.add('active');
+                }
+            });
+        }
+        
+        function generateRules() {
+            const projectDesc = document.getElementById('projectDesc').value.trim();
+            const options = {
+                functional: document.getElementById('functional').checked,
+                typescript: document.getElementById('typescript').checked,
+                errorHandling: document.getElementById('errorHandling').checked,
+                testing: document.getElementById('testing').checked,
+                performance: document.getElementById('performance').checked,
+                accessibility: document.getElementById('accessibility').checked,
+                security: document.getElementById('security').checked,
+                documentation: document.getElementById('documentation').checked
+            };
+            
+            const template = stackTemplates[currentStack];
+            let rules = `# cursor.rules
+
+# Project: ${projectDesc || 'Custom Project'}
+# Tech Stack: ${template.name}
+# Generated at: ${new Date().toISOString().split('T')[0]}
+
+## Core Principles
+- Write clean, maintainable, and readable code
+- Follow existing patterns in the codebase
+- Ask for clarification when requirements are unclear
+${projectDesc ? `- Understand the project: ${projectDesc}` : ''}
+
+## General Guidelines
+`;
+            
+            if (options.functional) {
+                rules += `\n## Functional Programming
+- Prefer pure functions with no side effects
+- Avoid mutating data directly; use immutable patterns
+- Use array methods (map, filter, reduce) over traditional loops
+`;
+            }
+            
+            if (options.typescript) {
+                rules += `\n## TypeScript
+- Use explicit types for function parameters and return values
+- Avoid \`any\` type; use \`unknown\` when type is uncertain
+- Define interfaces for complex objects
+- Enable strict mode
+`;
+            }
+            
+            rules += `\n## Code Style
+- Use meaningful, descriptive variable and function names
+- Keep functions small and focused (single responsibility)
+- Use consistent formatting (prettier/eslint compatible)
+`;
+            
+            if (options.errorHandling) {
+                rules += `\n## Error Handling
+- Always handle potential errors with try/catch or error boundaries
+- Provide meaningful error messages
+- Log errors appropriately for debugging
+`;
+            }
+            
+            if (options.testing) {
+                rules += `\n## Testing
+- Write tests for critical business logic
+- Follow AAA pattern (Arrange, Act, Assert)
+- Keep tests independent and isolated
+`;
+            }
+            
+            if (options.performance) {
+                rules += `\n## Performance
+- Avoid unnecessary re-renders or computations
+- Use lazy loading for heavy resources
+- Optimize database queries and API calls
+`;
+            }
+            
+            if (options.accessibility) {
+                rules += `\n## Accessibility
+- Use semantic HTML elements
+- Add alt text for images
+- Ensure keyboard navigation support
+- Maintain sufficient color contrast
+`;
+            }
+            
+            if (options.security) {
+                rules += `\n## Security
+- Never hardcode sensitive data (API keys, passwords)
+- Validate and sanitize all user inputs
+- Use HTTPS for all external requests
+- Follow OWASP security guidelines
+`;
+            }
+            
+            if (options.documentation) {
+                rules += `\n## Documentation
+- Add comments for complex logic
+- Document all exported functions and classes
+- Keep README up to date
+`;
+            }
+            
+            rules += `\n## Framework-Specific Rules
+${template.rules.map(r => `- ${r.replace('# ', '')}`).join('\n')}
+`;
+            
+            rules += `\n---\nGenerated by Cursor Rules Generator`;
+            
+            document.getElementById('rulesOutput').textContent = rules;
+            document.getElementById('outputSection').style.display = 'block';
+            document.getElementById('outputSection').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        function copyRules() {
+            const rules = document.getElementById('rulesOutput').textContent;
+            navigator.clipboard.writeText(rules).then(() => {
+                const btn = document.getElementById('copyBtn');
+                const originalText = btn.querySelector('span').textContent;
+                btn.querySelector('span').textContent = currentLang === 'en' ? 'Copied!' : '已复制!';
+                btn.classList.add('copied');
+                setTimeout(() => {
+                    btn.querySelector('span').textContent = originalText;
+                    btn.classList.remove('copied');
+                }, 2000);
+            });
+        }
+        
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'zh' : 'en';
+            
+            document.querySelectorAll('[data-' + (currentLang === 'en' ? 'zh' : 'en') + ']').forEach(el => {
+                const text = el.getAttribute('data-' + currentLang);
+                if (text) el.textContent = text;
+            });
+            
+            document.querySelectorAll('[data-' + currentLang + '-placeholder]').forEach(el => {
+                el.placeholder = el.getAttribute('data-' + currentLang + '-placeholder');
+            });
+            
+            document.querySelector('.lang-toggle').textContent = currentLang === 'en' ? '中文' : 'EN';
+        }
+        
+        document.querySelectorAll('.faq-question').forEach(q => q.addEventListener('click', () => q.parentElement.classList.toggle('open')));
+    </script>
+</body>
+</html>
